@@ -7,7 +7,7 @@
     "stg": "vite serve --mode stg",
     "prod": "vite serve --mode prod",
     "build:local": "vite build",
-    "build:dev": "vue-tsc --noEmit && vite build --mode dev",
+    "build:dev": "vite build --mode dev",
     "build:stg": "vue-tsc --noEmit && vite build --mode stg",
     "build:prod": "vue-tsc --noEmit && vite build --mode prod",
     "serve": "vite preview"
