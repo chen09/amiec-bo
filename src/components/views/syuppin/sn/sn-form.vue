@@ -130,7 +130,7 @@ import {PlusOutlined, LoadingOutlined} from '@ant-design/icons-vue'
 import {Tabs, TabPane, Card, Collapse, CollapsePanel} from 'ant-design-vue'
 import {Form} from 'ant-design-vue'
 import {Button} from 'ant-design-vue'
-// import mockData from './mockData.json'
+import mockData from './mockData.json'
 import _ from 'lodash'
 
 export default defineComponent({
@@ -164,7 +164,10 @@ export default defineComponent({
       this.error = this.post = null
       this.loading = true
       console.log("@@@@",id)
-      const data =_.get(this.dataSource,id)
+
+      // axios
+
+      const data =_.get(mockData,id)
       this.loading = false
       if (data){
         this.post = data
@@ -183,7 +186,7 @@ import {defineComponent, reactive, ref} from 'vue'
 import {watch, computed} from 'vue';
 import {ValidationRule} from 'ant-design-vue/lib/form/Form'
 import {useRoute} from "vue-router";
-import mockData from './mockData.json'
+// import mockData from './mockData.json'
 
 const activeKey = ref('1')
 const formRef = ref<any>(null)
@@ -191,7 +194,7 @@ const labelCol = {span: 3};
 const wrapperCol = { span: 20 }
 const route = useRoute()
 
-const dataSource = reactive(mockData)
+// const dataSource = reactive(mockData)
 
 
 // // console.log(route)
