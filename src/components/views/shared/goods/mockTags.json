@@ -1,0 +1,31 @@
+{
+  "publish_status": {
+    "color": "green",
+    "values": {
+      "0": "表示",
+      "1": "非表示"
+    }
+  },
+  "sale_status": {
+    "color": "blue",
+    "values": {
+      "0": "準備中",
+      "3": "通常販売"
+    }
+  },
+  "goods_category": {
+    "color": "orange",
+    "values": {
+      "1": "新品",
+      "2": "中古"
+    }
+  },
+  "goods_condition": {
+    "color": "purple",
+    "values": {
+      "6": "並品",
+      "3": "美品",
+      "5": "良品"
+    }
+  }
+}
