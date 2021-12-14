@@ -50,6 +50,33 @@ export const routes: Array<RouteRecordRaw> = [
                         }
                     }
                 ]
+            },
+            {
+                path: '/buying',
+                name: 'buying',
+                redirect: '/buying/list',
+                component: () => import('@/components/transition/router-transition.vue'),
+                meta: {
+                    title: 'Buying',
+                    icon: 'icon-shangpin'
+                },
+                children: [
+                    {
+                        path: '/list', name: 'buying-list', component: () => import('@/components/views/shared/buying/list.vue'),
+                        meta: {
+                            title: 'Buying List',
+                            icon: 'icon-list'
+                        }
+                    },
+                    {
+                        path: '/detail/:purchase_no?', name: 'buying-detail', component: () => import('@/components/views/shared/buying/detail.vue'),
+                        meta: {
+                            title: 'Buying Detail',
+                            icon: 'icon-dulituihuodingdan'
+                        }
+                    }
+
+                ]
             }
         ]
     },
