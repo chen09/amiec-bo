@@ -10,6 +10,7 @@ declare module '*.vue' {
 interface ImportMetaEnv extends Readonly<Record<string, string>> {
   readonly VITE_APP_TITLE: string
   readonly VITE_BASE_URL: string
+  readonly VUE_APP_API_URL: string
   // more env variables...
 }
 
