@@ -62,7 +62,7 @@ export const routes: Array<RouteRecordRaw> = [
                 },
                 children: [
                     {
-                        path: '/list', name: 'buying-list', component: () => import('@/components/views/shared/buying/list.vue'),
+                        path: 'list', name: 'buying-list', component: () => import('@/components/views/shared/buying/list.vue'),
                         meta: {
                             title: 'Buying List',
                             icon: 'icon-list'
