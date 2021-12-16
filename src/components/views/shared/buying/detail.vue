@@ -245,7 +245,7 @@ export default defineComponent({
               // this.purchase_no = this.$route.params.id
               // this.formState.purchase_no = this.$route.params.id
               // console.log("aaa")
-              console.log(this.$route.params.id)
+              // console.log(this.$route.params.id)
             }
           },
           // 组件创建完后获取数据，
