@@ -5,7 +5,7 @@ import exports from './export'
 
 export const routes: Array<RouteRecordRaw> = [
     {
-        path: '/',
+        path: '',
         name: 'Layout',
         component: () => import('@/layout/layout.vue'),
         redirect: '/dashboard',
@@ -14,7 +14,7 @@ export const routes: Array<RouteRecordRaw> = [
         },
         children: [
             {
-                path: '/dashboard',
+                path: 'dashboard',
                 name: 'dashboard',
                 redirect: '/dashboard/home',
                 component: () => import('@/components/transition/router-transition.vue'),
@@ -33,7 +33,7 @@ export const routes: Array<RouteRecordRaw> = [
                 ]
             },
             {
-                path: '/goods',
+                path: 'goods',
                 name: 'goods',
                 redirect: '/goods/list',
                 component: () => import('@/components/transition/router-transition.vue'),
@@ -52,7 +52,7 @@ export const routes: Array<RouteRecordRaw> = [
                 ]
             },
             {
-                path: '/buying',
+                path: 'buying',
                 name: 'buying',
                 redirect: '/buying/list',
                 component: () => import('@/components/transition/router-transition.vue'),
@@ -66,13 +66,23 @@ export const routes: Array<RouteRecordRaw> = [
                         meta: {
                             title: 'Buying List',
                             icon: 'icon-list'
-                        }
+                        },
+                        // children: [
+                        //     {
+                        //         path: 'detail', name: 'buying-detail', component: () => import('@/components/views/shared/buying/detail.vue'),
+                        //         meta: {
+                        //             title: 'Buying Detail',
+                        //             icon: 'icon-dulituihuodingdan'
+                        //         }
+                        //     }
+                        // ]
                     },
                     {
-                        path: '/detail/:purchase_no?', name: 'buying-detail', component: () => import('@/components/views/shared/buying/detail.vue'),
+                        path: 'list/detail/:purchase_no?', name: 'buying-detail', component: () => import('@/components/views/shared/buying/detail.vue'),
                         meta: {
                             title: 'Buying Detail',
-                            icon: 'icon-dulituihuodingdan'
+                            icon: 'icon-dulituihuodingdan',
+                            keepAlive: false
                         }
                     }
 

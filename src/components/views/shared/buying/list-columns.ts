@@ -6,12 +6,13 @@ import OperateModal from '@/components/views/shared/goods/operate-modal.vue'
 import GoodsItem from '@/components/views/shared/goods/goods-item.vue'
 import GoodsFormModal from '@/components/views/shared/goods/goods-form-modal.vue'
 
-import {formatDate} from '@/utils/common'
+import {formatDate, formatPurchaseStatus, formatReturnStatus} from '@/utils/common'
 import {createVNode} from 'vue'
 import {Tag} from 'ant-design-vue'
 import mockTags from './mockTags.json'
 import {convertTags, formatCurrency} from '@/components/views/shared/goods'
 import {DeleteOutlined, EditOutlined} from '@ant-design/icons-vue'
+
 
 export const listColumnDefinitions: TableColumn[] = [
     {
@@ -25,7 +26,7 @@ export const listColumnDefinitions: TableColumn[] = [
             customRender: 'purchase_no'
         },
         slotsFunc: (record) =>
-            createVNode('a', {href: './detail/' + record.purchase_no}, record.purchase_no)
+            createVNode('a', {href: './list/detail/' + record.purchase_no}, record.purchase_no)
     },
     {
         title: 'EC買取ID',
@@ -72,14 +73,24 @@ export const listColumnDefinitions: TableColumn[] = [
     {
         title: '買取ステータス',
         align: 'center',
+        dataIndex: 'purchase_status',
         width: 40,
-        dataIndex: 'purchase_status'
+        slots: {
+            customRender: 'purchase_status'
+        },
+        slotsType: 'format',
+        slotsFunc: (val) => formatPurchaseStatus(val)
     },
     {
         title: 'お預り品返却ステータス',
         align: 'center',
         width: 40,
-        dataIndex: 'return_status'
+        dataIndex: 'return_status',
+        slots: {
+            customRender: 'purchreturn_statusase_status'
+        },
+        slotsType: 'format',
+        slotsFunc: (val) => formatReturnStatus(val)
     },
     {
         title: '合計金額',

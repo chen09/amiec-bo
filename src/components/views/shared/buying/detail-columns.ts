@@ -25,7 +25,7 @@ export const detailColumnDefinitions: TableColumn[] = [
             customRender: 'purchase_detail_no'
         },
         slotsFunc: (record) =>
-            createVNode('a', {href: './detail/' + record.purchase_detail_no}, record.purchase_detail_no)
+            createVNode('a', {href: 'detail/' + record.purchase_detail_no}, record.purchase_detail_no)
     },
     {
         title: 'メーカー',

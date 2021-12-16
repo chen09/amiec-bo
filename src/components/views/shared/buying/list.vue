@@ -1,6 +1,15 @@
 <template>
   <div>
+
+    <!--    <a-button type="primary" @click="tableRef?.refreshTableData({}, true)">検索</a-button>-->
+    <!--    <a-button type="primary"> test</a-button>-->
+
+<!--    <a-button type="primary"> new a buying</a-button>-->
+<!--    <hr/>-->
+
     <table-query-header>
+
+
       <template #item1="{ setLabel }">
         <div :label="setLabel('商材')">
           <a-radio-group v-model:value="queryParam.status" placeholder="商材" default-value="1">
@@ -34,8 +43,8 @@
         </div>
       </template>
       <template #buttons>
-        <a-button type="primary" @click="tableRef?.refreshTableData({}, true)">查询</a-button>
-        <a-button style="margin-left: 8px" @click="() => (queryParam = {})">重置</a-button>
+        <a-button type="primary" @click="tableRef?.refreshTableData({}, true)">検索</a-button>
+        <a-button style="margin-left: 8px" @click="() => (queryParam = {})">リセット</a-button>
       </template>
     </table-query-header>
     <dynamic-table
@@ -46,15 +55,34 @@
         :get-list-func="loadData"
         :columns="columns"
         rowKey="purchase_no"
-    />
+    >
+
+      <template #title>
+        <a-button
+            type="primary"
+            @click="addItem"
+        >
+          Add
+        </a-button>
+        <a-button
+            type="primary"
+            @click="deleteItems"
+        >
+          Delete
+        </a-button>
+      </template>
+      <template #moduleName="{ record }">
+      <span :ref="(el) => el && (itemRefs[record.id] = el)">
+        {{ record.moduleName || record.actionName }}
+      </span>
+      </template>
+    </dynamic-table>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-
 import {DynamicTable, TableQueryHeader} from '@/components/dynamic-table'
-import {Checkbox, Row, Col} from 'ant-design-vue'
 
 export default defineComponent({
   name: 'PurchaseList',
@@ -70,10 +98,10 @@ import mockData from './mockData.json'
 import {listColumnDefinitions} from './list-columns'
 import {reactive, ref} from 'vue'
 import {getBuyingList} from '@/utils/api/buying'
-
 // import GoodsItem from '@/views/shared/demos/goods/goods-item.vue'
 
 const tableRef = ref<InstanceType<typeof DynamicTable>>()
+const itemRefs = ref({})
 
 const dataSource = reactive(mockData)
 const columns = listColumnDefinitions.map((n) => ({width: 120, ...n}))
@@ -122,6 +150,16 @@ let queryParam = reactive({
   startDate: '',
   endDate: ''
 })
+
+import {useCreateModal} from '@/hooks'
+import BuyingDetail from './detail.vue'
+const addItem = () => {
+  // useCreateModal(BuyingDetail, {
+  //   callback: () => {
+  //     tableRef.value?.refreshTableData()
+  //   }
+  // })
+}
 </script>
 
 <style scoped></style>

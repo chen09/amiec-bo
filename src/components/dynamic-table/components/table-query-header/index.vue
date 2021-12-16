@@ -25,7 +25,7 @@
           <slot name="buttons"></slot>
           <template v-if="Object.keys($slots).length * 8 > 24">
             <a style="margin-left: 8px" @click="toggleAdvanced">
-              {{ advanced ? '收起' : '展开' }}
+              {{ advanced ? '折畳' : '展開' }}
               <DownOutlined class="collapse-icon" />
             </a>
           </template>

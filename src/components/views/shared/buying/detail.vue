@@ -1,86 +1,195 @@
 <template>
   <div>
-      <a-tabs type="card" v-model:activeKey="activeKey" :style="{ height: '250px' }">
-        <a-tab-pane key="1" tab="おまとめ設定">
-          <a-form-item label="おまとめ対象フラグ">
-            <a-switch v-model:checked="formState.combined_flg"/>
-          </a-form-item>
-          <a-form-item label="おまとめ先買取伝票番号">
-            <a-input v-model:value="formState.combined_purchase_no"/>
-          </a-form-item>
-          <a-button type="primary" @click="doCombine">おまとめ</a-button>
-        </a-tab-pane>
-        <a-tab-pane key="2" tab="買取情報">
-          <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="買取伝票番号">
-                <a-input v-model:value="formState.purchase_no"/>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item label="買取ステータス">
-                <a-select v-model:value="formState.purchase_status" placeholder="">
-                  <a-select-option value="01">買取受付</a-select-option>
-                  <a-select-option value="02">査定済</a-select-option>
-                  <a-select-option value="03">返答待ち</a-select-option>
-                  <a-select-option value="04">査定額承認済</a-select-option>
-                  <a-select-option value="05">査定額一部承認</a-select-option>
-                  <a-select-option value="06">査定額承認拒否</a-select-option>
-                  <a-select-option value="07">再査定中</a-select-option>
-                  <a-select-option value="08">買取確定</a-select-option>
-                  <a-select-option value="09">買取キャンセル</a-select-option>
-                  <a-select-option value="10">確定後キャンセル</a-select-option>
-                  <a-select-option value="11">買取金支払済</a-select-option>
-                  <a-select-option value="12">下取仮確定</a-select-option>
-                  <a-select-option value="13">下取り確定待ち</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item label="EC買取ID">
-                <a-input v-model:value="formState.ec_purchase_id"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
+    <a-button type="primary">おまとめ設定</a-button> &nbsp;
+    <a-button type="primary">Save</a-button>
+    <hr/>
+    <a-tabs type="card" v-model:activeKey="activeKey" :style="{ height: '250px' }">
 
-          <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="受付日">
-                <a-input v-model:value="formState.date"/>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item label="商材">
-                <a-radio-group v-model:value="formState.merchandise_cd">
-                  <a-radio value="1">時計</a-radio>
-                  <a-radio value="2">カメラ</a-radio>
-                  <a-radio value="3">筆記用具</a-radio>
-                  <a-radio value="4">自転車</a-radio>
-                </a-radio-group>
+      <a-tab-pane key="1" tab="顧客情報">
 
-              </a-form-item>
+        <a-collapse v-model:activeKey="activeKey2">
+          <a-collapse-panel key="1" header="基本情報">
+            <a-row :gutter="16">
+              <a-col :span="8">
+                <a-form-item label="会員カード番号">
+                  <a-input/>
+                  <a-button type="primary">照会</a-button>
+                </a-form-item>
 
-            </a-col>
-            <a-col :span="8">
-              <a-form-item label="受付フロア">
-                <a-select v-model:value="formState.floor_cd" placeholder="">
-                  <a-select-option value="01">01</a-select-option>
-                  <a-select-option value="02">02</a-select-option>
-                  <a-select-option value="03">03</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-          </a-row>
+              </a-col>
 
 
-        </a-tab-pane>
-        <a-tab-pane key="3" tab="顧客情報">Content of Tab Pane 3</a-tab-pane>
-        <a-tab-pane key="3" tab="振込情報">Content of Tab Pane 3</a-tab-pane>
-        <a-tab-pane key="4" tab="買取伝票明細一覧">Content of Tab Pane 3</a-tab-pane>
-        <a-tab-pane key="5" tab="注文情報">Content of Tab Pane 3</a-tab-pane>
-        <a-tab-pane key="5" tab="お受取内容">Content of Tab Pane 3</a-tab-pane>
+              <a-col :span="8">
+                <a-form-item label="顧客コード">
+                  <a-input/>
+                  <a-button type="primary">反映</a-button>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="16">
+              <a-col :span="8">
+                <a-form-item label="顧客名">
+                  <a-input/>
+                </a-form-item>
+              </a-col>
+              <a-col :span="8">
+                <a-form-item label="顧客名（カナ）">
+                  <a-input/>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="16">
+              <a-col :span="8">
+                <a-form-item label="性別">
+                  <a-input/>
+                </a-form-item>
 
-      </a-tabs>
+              </a-col>
+              <a-col :span="8">
+                <a-form-item label="生年月日">
+                  <a-input/>
+                </a-form-item>
+
+              </a-col>
+            </a-row>
+          </a-collapse-panel>
+
+          <a-collapse-panel key="2" header="振込情報">
+            <a-row :gutter="16">
+              <a-col :span="8">
+                <a-form-item label="銀行コード">
+                  <a-input/>
+                  <a-button type="primary">照会</a-button>
+                </a-form-item>
+
+              </a-col>
+
+
+              <a-col :span="8">
+                <a-form-item label="支店コード">
+                  <a-input/>
+                  <label type="primary">金融機関名</label>
+                  <label type="primary">支店名</label>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="16">
+              <a-col :span="8">
+                <a-form-item label="口座名義（カナ）">
+                  <a-input/>
+                </a-form-item>
+              </a-col>
+              <a-col :span="8">
+                <a-form-item label="口座番号">
+                  <a-input/>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="16">
+              <a-col :span="8">
+                <a-form-item label="性別">
+                  <a-input/>
+                </a-form-item>
+
+              </a-col>
+              <a-col :span="8">
+                <a-form-item label="生年月日">
+                  <a-input/>
+                </a-form-item>
+
+              </a-col>
+            </a-row>
+          </a-collapse-panel>
+
+          </a-collapse>
+
+
+      </a-tab-pane>
+
+      <a-tab-pane key="2" tab="買取情報">
+        <a-row :gutter="16">
+          <a-col :span="8">
+            <a-form-item label="買取伝票番号">
+              <a-input v-model:value="formState.purchase_no"/>
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-item label="買取ステータス">
+              <a-select v-model:value="formState.purchase_status" placeholder="">
+                <a-select-option value="01">買取受付</a-select-option>
+                <a-select-option value="02">査定済</a-select-option>
+                <a-select-option value="03">返答待ち</a-select-option>
+                <a-select-option value="04">査定額承認済</a-select-option>
+                <a-select-option value="05">査定額一部承認</a-select-option>
+                <a-select-option value="06">査定額承認拒否</a-select-option>
+                <a-select-option value="07">再査定中</a-select-option>
+                <a-select-option value="08">買取確定</a-select-option>
+                <a-select-option value="09">買取キャンセル</a-select-option>
+                <a-select-option value="10">確定後キャンセル</a-select-option>
+                <a-select-option value="11">買取金支払済</a-select-option>
+                <a-select-option value="12">下取仮確定</a-select-option>
+                <a-select-option value="13">下取り確定待ち</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-item label="EC買取ID">
+              <a-input v-model:value="formState.ec_purchase_id"/>
+            </a-form-item>
+          </a-col>
+        </a-row>
+
+        <a-row :gutter="16">
+          <a-col :span="8">
+            <a-form-item label="受付日">
+              <a-input v-model:value="formState.date"/>
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-item label="商材">
+              <a-radio-group v-model:value="formState.merchandise_cd">
+                <a-radio value="1">時計</a-radio>
+                <a-radio value="2">カメラ</a-radio>
+                <a-radio value="3">筆記用具</a-radio>
+                <a-radio value="4">自転車</a-radio>
+              </a-radio-group>
+
+            </a-form-item>
+
+          </a-col>
+          <a-col :span="8">
+            <a-form-item label="受付フロア">
+              <a-select v-model:value="formState.floor_cd" placeholder="">
+                <a-select-option value="01">01</a-select-option>
+                <a-select-option value="02">02</a-select-option>
+                <a-select-option value="03">03</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+        </a-row>
+
+
+      </a-tab-pane>
+
+
+      <a-tab-pane key="3" tab="その他">
+
+        <a-collapse v-model:activeKey="activeKey3">
+          <a-collapse-panel key="1" header="注文情報">
+
+          </a-collapse-panel>
+
+          <a-collapse-panel key="2" header="お受取内容">
+
+          </a-collapse-panel>
+
+        </a-collapse>
+
+
+      </a-tab-pane>
+
+
+    </a-tabs>
 
     <hr/>
 
@@ -92,7 +201,22 @@
         :data-source="dataSource"
         :columns="columns"
         rowKey="purchase_no"
-    />
+    >
+      <template #title>
+        <a-button
+            type="primary"
+            @click="addItem"
+        >
+          Add
+        </a-button>
+        <a-button
+            type="primary"
+            @click="deleteItems"
+        >
+          Delete
+        </a-button>
+      </template>
+    </dynamic-table>
   </div>
 
 
@@ -106,23 +230,29 @@ import {Checkbox, Row, Col} from 'ant-design-vue'
 
 
 export default defineComponent({
-  name: 'PurchaseDetail',
+  name: 'BuyingDetail',
   component: {
     DynamicTable,
     TableQueryHeader
   },
   created() {
-    this.$watch(
-        () => this.$route.params,
-        () => {
-          this.purchase_no = this.$route.params.purchase_no
-          this.formState.purchase_no = this.$route.params.purchase_no
-          console.log(this.$route.params.purchase_no)
-        },
-        // 组件创建完后获取数据，
-        // 此时 data 已经被 observed 了
-        {immediate: true}
-    )
+    if (this.$route) {
+      this.$watch(
+          () => this.$route.params.id,
+          () => {
+            if (this.$route) {
+              this.purchase_no = this.$route.params.purchase_no
+              this.formState.purchase_no = this.$route.params.purchase_no
+              console.log("aaa")
+              console.log(this.$route.params.purchase_no)
+            }
+          },
+          // 组件创建完后获取数据，
+          // 此时 data 已经被 observed 了
+          {immediate: true}
+      )
+    }
+
   },
 })
 </script>
@@ -130,7 +260,7 @@ export default defineComponent({
 <script setup lang="ts">
 import mockData from './mockData.json'
 import {detailColumnDefinitions} from './detail-columns'
-import {reactive, ref, UnwrapRef} from 'vue'
+import {reactive, ref, UnwrapRef, watch} from 'vue'
 import {Moment} from 'moment';
 
 // import GoodsItem from '@/views/shared/demos/goods/goods-item.vue'
@@ -181,6 +311,29 @@ const formState: UnwrapRef<FormState> = reactive({
   resource: '',
   desc: '',
 });
+
+const activeKey2 = ref('1')
+
+// import {useRoute} from "vue-router";
+//
+// const route = useRoute()
+// watch(
+//     () => route.params,
+//     (count, prevCount) => {
+//       console.log("aaaa")
+//       console.log(count, prevCount)
+//       /* ... */
+//     }
+// )
+
+import {useCreateModal} from '@/hooks'
+const addItem = () => {
+  // useCreateModal(BuyingDetailItem, {
+  //   callback: () => {
+  //     // tableRef.value?.refreshTableData()
+  //   }
+  // })
+}
 
 </script>
 
