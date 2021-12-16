@@ -242,9 +242,9 @@ export default defineComponent({
           () => this.$route.params.id,
           () => {
             if (this.$route) {
-              this.purchase_no = this.$route.params.id
-              this.formState.purchase_no = this.$route.params.id
-              console.log("aaa")
+              // this.purchase_no = this.$route.params.id
+              // this.formState.purchase_no = this.$route.params.id
+              // console.log("aaa")
               console.log(this.$route.params.id)
             }
           },
