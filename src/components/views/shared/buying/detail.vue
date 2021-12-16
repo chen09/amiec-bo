@@ -237,14 +237,15 @@ export default defineComponent({
   },
   created() {
     if (this.$route) {
+      console.log(this.$route)
       this.$watch(
           () => this.$route.params.id,
           () => {
             if (this.$route) {
-              this.purchase_no = this.$route.params.purchase_no
-              this.formState.purchase_no = this.$route.params.purchase_no
+              this.purchase_no = this.$route.params.id
+              this.formState.purchase_no = this.$route.params.id
               console.log("aaa")
-              console.log(this.$route.params.purchase_no)
+              console.log(this.$route.params.id)
             }
           },
           // 组件创建完后获取数据，

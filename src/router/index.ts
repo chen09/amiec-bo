@@ -78,7 +78,7 @@ export const routes: Array<RouteRecordRaw> = [
                         // ]
                     },
                     {
-                        path: 'list/detail/:purchase_no?', name: 'buying-detail', component: () => import('@/components/views/shared/buying/detail.vue'),
+                        path: 'list/detail/:id?', name: 'buying-detail', component: () => import('@/components/views/shared/buying/detail.vue'),
                         meta: {
                             title: 'Buying Detail',
                             icon: 'icon-dulituihuodingdan',
