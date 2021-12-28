@@ -152,13 +152,13 @@ let queryParam = reactive({
 })
 
 import {useCreateModal} from '@/hooks'
-import BuyingDetail from './detail.vue'
+import TestModal from './test-modal.vue'
 const addItem = () => {
-  // useCreateModal(BuyingDetail, {
-  //   callback: () => {
-  //     tableRef.value?.refreshTableData()
-  //   }
-  // })
+  useCreateModal(TestModal, {
+    callback: () => {
+      tableRef.value?.refreshTableData()
+    }
+  })
 }
 </script>
 
