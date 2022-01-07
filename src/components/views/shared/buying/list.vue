@@ -98,7 +98,7 @@ import mockData from './mockData.json'
 import {listColumnDefinitions} from './list-columns'
 import {reactive, ref} from 'vue'
 import {getBuyingList} from '@/utils/api/buying'
-// import GoodsItem from '@/views/shared/demos/goods/goods-item.vue'
+// import GoodsItem from '@/views/shared/demos/goods/goods-order.vue'
 
 const tableRef = ref<InstanceType<typeof DynamicTable>>()
 const itemRefs = ref({})

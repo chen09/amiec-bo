@@ -26,7 +26,7 @@ export default defineComponent({
 import mockData from './mockData.json'
 import { columnDefinitions } from './columns'
 import { reactive } from 'vue'
-// import GoodsItem from '@/views/shared/demos/goods/goods-item.vue'
+// import GoodsItem from '@/views/shared/demos/goods/goods-order.vue'
 
 const dataSource = reactive(mockData)
 const columns = columnDefinitions.map((n) => ({ width: 120, ...n }))

@@ -264,7 +264,7 @@ import {detailColumnDefinitions} from './detail-columns'
 import {reactive, ref, UnwrapRef, watch} from 'vue'
 import {Moment} from 'moment';
 
-// import GoodsItem from '@/views/shared/demos/goods/goods-item.vue'
+// import GoodsItem from '@/views/shared/demos/goods/goods-order.vue'
 const tableRef = ref<InstanceType<typeof DynamicTable>>()
 const purchase_no = ref()
 
